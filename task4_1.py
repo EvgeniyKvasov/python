@@ -1,46 +1,25 @@
-print("\nРешение задачи Хороший ребенок.")
-
-print("\nВведите количество наборов (t) данных:")
-
 t = int(input())
 
-for i in range(t):
+results = []  
+
+for _ in range(t):
+    n = int(input())
+    array = list(map(int, input().split()))
     
-   print("\nВведите количество цифр (n) в наборе данных:")
-   
-   n = int(input())
-   
-   print("\nВведите цифры через пробел:")
+    max_multiply = 0
     
-   array = list(map(int, input().split()))
-    
-   max_multiply = 0
-    
-   for i in range(n):
-            
+    for i in range(n):
         temp = array.copy()
-            
-        temp[i] = min(temp[i] + 1, 9)
-               
-        multiply = 1
+        temp[i] = temp[i] + 1
         
-        for k in temp:
-                
-            multiply *= k
-                
-               
+        multiply = 1
+        for num in temp:
+            multiply *= num
+        
         if multiply > max_multiply:
-            
-             max_multiply = multiply
+            max_multiply = multiply
     
-        print("\nВходные данные:")
+    results.append(max_multiply)  
 
-        print("t = ", t)
-
-        print("n =", n)
-
-        print(array)
-
-        print("\nВыходные данные:")
-
-        print(f"\nМаксимальное произведение: {max_multiply}")
+for result in results:
+    print(result)
